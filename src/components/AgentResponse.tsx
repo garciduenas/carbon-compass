@@ -22,7 +22,7 @@ export default function AgentResponse({ query }: AgentResponseProps) {
         {/* Header */}
         <div className="px-6 py-4 border-b border-border flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-primary" />
-          <span className="text-xs text-muted-foreground font-medium">Analysis Complete</span>
+          <span className="text-xs text-muted-foreground font-medium">Nemotron Agent — Analysis Complete</span>
         </div>
 
         {/* Analysis */}
