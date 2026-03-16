@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Leaf, Train, Utensils, ArrowDown, CheckCircle2 } from "lucide-react";
+import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus } from "lucide-react";
 
 interface AgentResponseProps {
   query: string;
@@ -76,6 +76,28 @@ export default function AgentResponse({ query }: AgentResponseProps) {
               <RecommendationItem icon={<Leaf size={16} />} title="Analyze and optimize daily patterns" saving="−53.1 KG" detail="Personalized plan based on your input data." delay={0.1} />
             )}
           </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="px-6 py-4 border-t border-border flex flex-wrap items-center gap-3">
+          <a
+            href="https://www.amtrak.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+          >
+            <ExternalLink size={14} />
+            Book Transportation
+          </a>
+          <a
+            href="https://calendar.google.com/calendar/r/eventedit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card text-foreground text-sm font-medium hover:bg-muted transition-colors"
+          >
+            <CalendarPlus size={14} />
+            Add to Google Calendar
+          </a>
         </div>
 
         {/* Footer */}
