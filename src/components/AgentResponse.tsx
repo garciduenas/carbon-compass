@@ -78,6 +78,28 @@ export default function AgentResponse({ query }: AgentResponseProps) {
           </div>
         </div>
 
+        {/* Action Buttons */}
+        <div className="px-6 py-4 border-t border-border flex flex-wrap items-center gap-3">
+          <a
+            href="https://www.amtrak.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+          >
+            <ExternalLink size={14} />
+            Book Transportation
+          </a>
+          <a
+            href="https://calendar.google.com/calendar/r/eventedit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card text-foreground text-sm font-medium hover:bg-muted transition-colors"
+          >
+            <CalendarPlus size={14} />
+            Add to Google Calendar
+          </a>
+        </div>
+
         {/* Footer */}
         <div className="px-6 py-3.5 border-t border-border flex items-center gap-2 bg-muted/50">
           <CheckCircle2 size={13} className="text-primary" />
