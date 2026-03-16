@@ -10,7 +10,7 @@ export default function Navbar() {
               <path d="M7 1L12 4.5V9.5L7 13L2 9.5V4.5L7 1Z" fill="hsl(var(--primary-foreground))" />
             </svg>
           </div>
-          <span className="font-semibold text-foreground tracking-tight">Standard Carbon</span>
+          <span className="font-semibold text-foreground tracking-tight">Carbon Compass</span>
           <span className="text-[10px] font-mono-data text-muted-foreground bg-muted px-1.5 py-0.5 rounded-md ml-1">
             NEMOTRON
           </span>

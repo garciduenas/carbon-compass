@@ -65,7 +65,7 @@ export default function Index() {
         </main>
       </div>
 
-      <SocialProof />
+      
       <AgenticCapabilities />
       <FeatureGrid />
 
