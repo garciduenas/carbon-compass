@@ -32,6 +32,27 @@ export default function AgentResponse({ query }: AgentResponseProps) {
             <p className="text-sm text-foreground/70 italic">"{query}"</p>
           </div>
 
+          {/* Current Source Breakdown */}
+          <div className="bg-muted/50 rounded-xl p-4 border border-border">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2 font-medium">Current Impact Source</p>
+            {isTravel ? (
+              <div className="space-y-1.5">
+                <p className="text-sm text-foreground">✈️ <span className="font-medium">Flight LAX → SJC</span> — 1h 15m, ~$89 avg one-way</p>
+                <p className="text-xs text-muted-foreground">Equivalent to driving a gas car 350 miles. A typical LA–SF corridor commuter generates ~284.8 KG CO₂e per round trip.</p>
+              </div>
+            ) : isFood ? (
+              <div className="space-y-1.5">
+                <p className="text-sm text-foreground">🥩 <span className="font-medium">8oz beef steak dinner</span> + <span className="font-medium">20mi gas car drive</span></p>
+                <p className="text-xs text-muted-foreground">The average American's weekly beef consumption (~1.7 lbs) produces ~33 KG CO₂e — comparable to driving 80 miles.</p>
+              </div>
+            ) : (
+              <div className="space-y-1.5">
+                <p className="text-sm text-foreground">📊 <span className="font-medium">Mixed daily activity</span></p>
+                <p className="text-xs text-muted-foreground">The average US adult produces ~44 KG CO₂e per day across transport, food, and energy use.</p>
+              </div>
+            )}
+          </div>
+
           {/* Impact Breakdown */}
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-muted rounded-xl p-4">
@@ -63,14 +84,14 @@ export default function AgentResponse({ query }: AgentResponseProps) {
 
             {isTravel ? (
               <>
-                <RecommendationItem icon={<Train size={16} />} title="Take Amtrak Pacific Surfliner + Capitol Corridor" saving="−103.8 KG" detail="LA Union Station → San Jose Diridon. 7h 45m. $42 one-way." delay={0.1} />
-                <RecommendationItem icon={<Leaf size={16} />} title="If flying: book SAF-enabled carrier" saving="−28.5 KG" detail="United LAX→SJC offers 40% SAF blend on select flights." delay={0.2} />
-                <RecommendationItem icon={<Utensils size={16} />} title="Offset remaining with verified CDR" saving="−10.1 KG" detail="Fund direct air capture at $12.40 for full offset." delay={0.3} />
+                <RecommendationItem icon={<Train size={16} />} title="Take Amtrak Pacific Surfliner + Capitol Corridor" saving="−103.8 KG" detail="LA Union Station → San Jose Diridon · 7h 45m · $42 one-way · Wi-Fi available" delay={0.1} />
+                <RecommendationItem icon={<Leaf size={16} />} title="If flying: book SAF-enabled carrier" saving="−28.5 KG" detail="United LAX → SJC · 1h 15m · ~$89 · 40% SAF blend on select flights" delay={0.2} />
+                <RecommendationItem icon={<Utensils size={16} />} title="Offset remaining with verified CDR" saving="−10.1 KG" detail="Fund direct air capture · $12.40 for full offset · Verified by Gold Standard" delay={0.3} />
               </>
             ) : isFood ? (
               <>
-                <RecommendationItem icon={<Utensils size={16} />} title="Swap beef for plant-based protein" saving="−12.8 KG" detail="Lentils, tempeh, or beyond burger reduce impact by 85%." delay={0.1} />
-                <RecommendationItem icon={<Train size={16} />} title="Replace 20mi drive with EV or transit" saving="−1.7 KG" detail="If available, local EV rideshare or bus cuts emissions significantly." delay={0.2} />
+                <RecommendationItem icon={<Utensils size={16} />} title="Swap beef for plant-based protein" saving="−12.8 KG" detail="Lentils, tempeh, or beyond burger · Same protein · 85% less emissions · Saves ~$4/meal" delay={0.1} />
+                <RecommendationItem icon={<Train size={16} />} title="Replace 20mi drive with EV or transit" saving="−1.7 KG" detail="Local bus: 45min, $1.75 · EV rideshare: 25min, ~$12 · vs. gas car: 30min, ~$6 in fuel" delay={0.2} />
               </>
             ) : (
               <RecommendationItem icon={<Leaf size={16} />} title="Analyze and optimize daily patterns" saving="−53.1 KG" detail="Personalized plan based on your input data." delay={0.1} />
