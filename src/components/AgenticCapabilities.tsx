@@ -57,7 +57,7 @@ export default function AgenticCapabilities() {
           Agentic AI, not just a chatbot
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Standard Carbon is powered by NVIDIA Nemotron — a model architecture designed from the ground up for autonomous, multi-step agent workflows.
+          Carbon Compass is powered by NVIDIA Nemotron — a model architecture designed from the ground up for autonomous, multi-step agent workflows.
         </p>
       </motion.div>
 
