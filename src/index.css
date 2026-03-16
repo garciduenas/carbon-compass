@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 152 76% 36%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 83 100% 45%;
+    --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 9%;
@@ -25,8 +25,8 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 152 76% 36%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 83 100% 45%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -36,23 +36,24 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 152 76% 36%;
+    --ring: 83 100% 45%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 152 76% 36%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 83 100% 45%;
+    --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 9%;
     --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 152 76% 36%;
+    --sidebar-ring: 83 100% 45%;
 
     /* Custom tokens */
-    --gradient-start: 152 80% 85%;
-    --gradient-mid: 190 90% 88%;
-    --gradient-end: 120 70% 90%;
+    --gradient-start: 83 80% 90%;
+    --gradient-mid: 75 70% 88%;
+    --gradient-end: 90 60% 92%;
+    --nemotron: 83 100% 45%;
   }
 }
 
@@ -83,9 +84,9 @@
 
   .hero-gradient {
     background: 
-      radial-gradient(ellipse 80% 60% at 50% 40%, hsl(152 80% 85% / 0.6), transparent),
-      radial-gradient(ellipse 60% 50% at 30% 60%, hsl(190 90% 88% / 0.5), transparent),
-      radial-gradient(ellipse 50% 40% at 70% 50%, hsl(120 70% 90% / 0.4), transparent),
+      radial-gradient(ellipse 80% 60% at 50% 40%, hsl(83 80% 90% / 0.7), transparent),
+      radial-gradient(ellipse 60% 50% at 30% 60%, hsl(75 70% 88% / 0.5), transparent),
+      radial-gradient(ellipse 50% 40% at 70% 50%, hsl(90 60% 92% / 0.4), transparent),
       hsl(var(--background));
   }
 

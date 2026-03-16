@@ -11,6 +11,9 @@ export default function Navbar() {
             </svg>
           </div>
           <span className="font-semibold text-foreground tracking-tight">Standard Carbon</span>
+          <span className="text-[10px] font-mono-data text-muted-foreground bg-muted px-1.5 py-0.5 rounded-md ml-1">
+            NEMOTRON
+          </span>
         </div>
         <div className="hidden md:flex gap-8 text-sm text-muted-foreground font-medium">
           <a href="#" className="hover:text-foreground transition-colors duration-200">Solutions</a>
