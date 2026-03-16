@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Leaf, Train, Utensils, ArrowDown, CheckCircle2 } from "lucide-react";
+import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus } from "lucide-react";
 
 interface AgentResponseProps {
   query: string;
