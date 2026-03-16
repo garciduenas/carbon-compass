@@ -32,8 +32,8 @@ export default function FeatureGrid() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">How it works</h2>
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto">Three layers of intelligence working together to minimize your environmental impact.</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">How the agent works</h2>
+        <p className="text-muted-foreground text-lg max-w-xl mx-auto">Three layers of Nemotron-powered intelligence working together to minimize your environmental impact.</p>
       </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((f, i) => (

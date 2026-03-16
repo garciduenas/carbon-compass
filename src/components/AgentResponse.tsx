@@ -81,7 +81,7 @@ export default function AgentResponse({ query }: AgentResponseProps) {
         {/* Footer */}
         <div className="px-6 py-3.5 border-t border-border flex items-center gap-2 bg-muted/50">
           <CheckCircle2 size={13} className="text-primary" />
-          <span className="text-xs text-muted-foreground">Methodology v2.4 · Verified sources</span>
+          <span className="text-xs text-muted-foreground">NVIDIA Nemotron · Autonomous reasoning · Verified sources</span>
         </div>
       </div>
     </motion.div>
