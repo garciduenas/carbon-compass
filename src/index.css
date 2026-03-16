@@ -36,14 +36,14 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 152 76% 36%;
+    --ring: 83 100% 45%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 152 76% 36%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 83 100% 45%;
+    --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 9%;
     --sidebar-border: 0 0% 90%;
