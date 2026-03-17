@@ -9,9 +9,38 @@ interface AgentResponseProps {
 
 const CURVE = [0.16, 1, 0.3, 1] as const;
 
-export default function AgentResponse({ query }: AgentResponseProps) {
+export default function AgentResponse({ query, onFollowUp }: AgentResponseProps) {
+  const [replyInput, setReplyInput] = useState("");
+  const [showReply, setShowReply] = useState(false);
+
   const isTravel = query.toLowerCase().includes("travel") || query.toLowerCase().includes("los angeles") || query.toLowerCase().includes("san jose");
   const isFood = query.toLowerCase().includes("beef") || query.toLowerCase().includes("ate") || query.toLowerCase().includes("drove");
+
+  const handleReplySubmit = () => {
+    if (replyInput.trim() && onFollowUp) {
+      onFollowUp(replyInput.trim());
+      setReplyInput("");
+      setShowReply(false);
+    }
+  };
+
+  const followUpSuggestions = isTravel
+    ? [
+        { icon: <CloudSun size={13} />, label: "What's the weather at my destination?", detail: "Get forecast for arrival day to optimize packing & route" },
+        { icon: <Calendar size={13} />, label: "I have a meeting at 2pm", detail: "Adjust departure to arrive on time with lowest emissions" },
+        { icon: <MessageSquare size={13} />, label: "I prefer window seats & early departures", detail: "Refine booking preferences for comfort + carbon balance" },
+      ]
+    : isFood
+    ? [
+        { icon: <CloudSun size={13} />, label: "What local produce is in season?", detail: "Seasonal food has 3x lower transport emissions" },
+        { icon: <Calendar size={13} />, label: "Plan my meals for the week", detail: "Optimize grocery list to reduce food waste & emissions" },
+        { icon: <MessageSquare size={13} />, label: "I'm allergic to soy & nuts", detail: "Dietary constraints for personalized low-carbon swaps" },
+      ]
+    : [
+        { icon: <CloudSun size={13} />, label: "Factor in today's weather", detail: "Adjust transport & energy recommendations" },
+        { icon: <Calendar size={13} />, label: "Share my weekly schedule", detail: "Optimize recurring activities for lower emissions" },
+        { icon: <MessageSquare size={13} />, label: "I work from home on Fridays", detail: "Personalize commute and energy patterns" },
+      ];
 
   return (
     <motion.div
