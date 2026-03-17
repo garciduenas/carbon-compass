@@ -4,12 +4,15 @@ import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, CalendarPlus, ArrowUp, 
 
 interface AgentResponseProps {
   query: string;
+  response?: string | null;
+  isLoading?: boolean;
+  error?: string | null;
   onFollowUp?: (query: string) => void;
 }
 
 const CURVE = [0.16, 1, 0.3, 1] as const;
 
-export default function AgentResponse({ query, onFollowUp }: AgentResponseProps) {
+export default function AgentResponse({ query, response, isLoading, error, onFollowUp }: AgentResponseProps) {
   const [replyInput, setReplyInput] = useState("");
   const [showReply, setShowReply] = useState(false);
 
@@ -61,6 +64,19 @@ export default function AgentResponse({ query, onFollowUp }: AgentResponseProps)
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-medium">Input Parsed</p>
             <p className="text-sm text-foreground/70 italic">"{query}"</p>
+          </div>
+
+          <div className="bg-muted/50 rounded-xl p-4 border border-border">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2 font-medium">Agent Response</p>
+            {error ? (
+              <p className="text-sm text-destructive">{error}</p>
+            ) : isLoading ? (
+              <p className="text-sm text-foreground/70">Waiting for agent response…</p>
+            ) : response ? (
+              <p className="text-sm text-foreground">{response}</p>
+            ) : (
+              <p className="text-sm text-muted-foreground">No response received yet.</p>
+            )}
           </div>
 
           {/* Current Source Breakdown */}

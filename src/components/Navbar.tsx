@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
@@ -16,10 +17,12 @@ export default function Navbar() {
           </span>
         </div>
         <div className="hidden md:flex gap-8 text-sm text-muted-foreground font-medium">
-          <a href="#" className="hover:text-foreground transition-colors duration-200">Solutions</a>
-          <a href="#" className="hover:text-foreground transition-colors duration-200">Methodology</a>
-          <a href="#" className="hover:text-foreground transition-colors duration-200">API</a>
-          <a href="#" className="hover:text-foreground transition-colors duration-200">Enterprise</a>
+          <Link to="/" className="hover:text-foreground transition-colors duration-200">
+            v1
+          </Link>
+          <Link to="/v2" className="hover:text-foreground transition-colors duration-200">
+            v2
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
