@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus, ArrowUp, CloudSun, Calendar, MessageSquare } from "lucide-react";
+import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, CalendarPlus, ArrowUp, CloudSun, Calendar, MessageSquare, Bot, CreditCard, MapPin } from "lucide-react";
 
 interface AgentResponseProps {
   query: string;
