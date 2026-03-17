@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AgentChatBox from "@/components/AgentChatBox";
 import AgentResponse from "@/components/AgentResponse";
+import AgentReasoningTimeline from "@/components/AgentReasoningTimeline";
 import FeatureGrid from "@/components/FeatureGrid";
-import SocialProof from "@/components/SocialProof";
 import AgenticCapabilities from "@/components/AgenticCapabilities";
 
 const CURVE = [0.16, 1, 0.3, 1] as const;
@@ -13,14 +13,24 @@ const CURVE = [0.16, 1, 0.3, 1] as const;
 export default function Index() {
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
+  const [showResponse, setShowResponse] = useState(false);
 
   const handleSubmit = (query: string) => {
     setIsProcessing(true);
-    setSubmittedQuery(null);
-    setTimeout(() => {
-      setSubmittedQuery(query);
-      setIsProcessing(false);
-    }, 1200);
+    setShowResponse(false);
+    setSubmittedQuery(query);
+    setShowTimeline(true);
+  };
+
+  const handleTimelineComplete = useCallback(() => {
+    setShowTimeline(false);
+    setShowResponse(true);
+    setIsProcessing(false);
+  }, []);
+
+  const handleFollowUp = (followUp: string) => {
+    handleSubmit(followUp);
   };
 
   return (
@@ -50,18 +60,14 @@ export default function Index() {
 
           <AgentChatBox onSubmit={handleSubmit} isProcessing={isProcessing} />
 
-          {isProcessing && (
-            <motion.div
-              className="mt-8 flex items-center justify-center gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm text-muted-foreground">Nemotron agent reasoning through optimal pathways...</span>
-            </motion.div>
-          )}
-
-          {submittedQuery && <AgentResponse query={submittedQuery} />}
+          <AnimatePresence mode="wait">
+            {showTimeline && (
+              <AgentReasoningTimeline key="timeline" onComplete={handleTimelineComplete} />
+            )}
+            {showResponse && submittedQuery && (
+              <AgentResponse key="response" query={submittedQuery} onFollowUp={handleFollowUp} />
+            )}
+          </AnimatePresence>
         </main>
       </div>
 
