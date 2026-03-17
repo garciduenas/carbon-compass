@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus, ArrowUp, CloudSun, Calendar, MessageSquare } from "lucide-react";
+import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, CalendarPlus, ArrowUp, CloudSun, Calendar, MessageSquare, Bot, CreditCard, MapPin } from "lucide-react";
 
 interface AgentResponseProps {
   query: string;
@@ -130,26 +130,31 @@ export default function AgentResponse({ query, onFollowUp }: AgentResponseProps)
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="px-6 py-4 border-t border-border flex flex-wrap items-center gap-3">
-          <a
-            href="https://www.amtrak.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
-          >
-            <ExternalLink size={14} />
-            Book Transportation
-          </a>
-          <a
-            href="https://calendar.google.com/calendar/r/eventedit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card text-foreground text-sm font-medium hover:bg-muted transition-colors"
-          >
-            <CalendarPlus size={14} />
-            Add to Google Calendar
-          </a>
+        {/* Agent Actions */}
+        <div className="px-6 py-4 border-t border-border space-y-2.5">
+          <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">Agent can handle</p>
+          <div className="space-y-1.5">
+            {[
+              { icon: <Bot size={13} />, label: "Book optimal transport via NemoClaw assistant", detail: "Autonomous booking agent handles reservations, seat selection & payment" },
+              { icon: <CalendarPlus size={13} />, label: "Sync itinerary to Google Calendar", detail: "Auto-create events with departure times, confirmations & reminders" },
+              { icon: <CreditCard size={13} />, label: "Purchase verified carbon offsets", detail: "Gold Standard CDR credits · Automated checkout · Receipt emailed" },
+              { icon: <MapPin size={13} />, label: "Find EV charging stops along route", detail: "Plan charging stops with real-time availability & pricing" },
+            ].map((action, i) => (
+              <motion.button
+                key={i}
+                className="w-full flex items-start gap-3 p-3 rounded-xl bg-primary/5 border border-primary/15 hover:border-primary/40 hover:bg-primary/10 transition-colors text-left group"
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 + i * 0.08, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="text-primary mt-0.5 shrink-0">{action.icon}</div>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-foreground">{action.label}</p>
+                  <p className="text-xs text-muted-foreground">{action.detail}</p>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </div>
 
         {/* Follow-up Suggestions */}
