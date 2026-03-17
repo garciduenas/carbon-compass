@@ -1,8 +1,10 @@
-import { motion } from "framer-motion";
-import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Leaf, Train, Utensils, ArrowDown, CheckCircle2, ExternalLink, CalendarPlus, ArrowUp, CloudSun, Calendar, MessageSquare } from "lucide-react";
 
 interface AgentResponseProps {
   query: string;
+  onFollowUp?: (query: string) => void;
 }
 
 const CURVE = [0.16, 1, 0.3, 1] as const;
