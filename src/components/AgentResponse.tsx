@@ -152,6 +152,71 @@ export default function AgentResponse({ query, onFollowUp }: AgentResponseProps)
           </a>
         </div>
 
+        {/* Follow-up Suggestions */}
+        <div className="px-6 py-4 border-t border-border space-y-2.5">
+          <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">Refine with more context</p>
+          <div className="space-y-1.5">
+            {followUpSuggestions.map((s, i) => (
+              <motion.button
+                key={i}
+                onClick={() => onFollowUp?.(s.label)}
+                className="w-full flex items-start gap-3 p-3 rounded-xl bg-muted/50 border border-border hover:border-primary/30 hover:bg-primary/5 transition-colors text-left group"
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 + i * 0.1, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="text-muted-foreground group-hover:text-primary transition-colors mt-0.5 shrink-0">{s.icon}</div>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-foreground">{s.label}</p>
+                  <p className="text-xs text-muted-foreground">{s.detail}</p>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Reply Box */}
+        <div className="px-6 py-4 border-t border-border">
+          <AnimatePresence>
+            {showReply ? (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="flex gap-2">
+                  <input
+                    value={replyInput}
+                    onChange={(e) => setReplyInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleReplySubmit()}
+                    placeholder="Add preferences, constraints, schedule..."
+                    className="flex-1 bg-muted border border-border rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40"
+                  />
+                  <button
+                    onClick={handleReplySubmit}
+                    disabled={!replyInput.trim()}
+                    className="w-9 h-9 bg-foreground text-background rounded-xl flex items-center justify-center hover:bg-foreground/90 transition-all disabled:opacity-30 shrink-0"
+                  >
+                    <ArrowUp size={15} />
+                  </button>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.button
+                onClick={() => setShowReply(true)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary/30 transition-colors"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                <MessageSquare size={14} />
+                Reply to refine this analysis
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </div>
+
         {/* Footer */}
         <div className="px-6 py-3.5 border-t border-border flex items-center gap-2 bg-muted/50">
           <CheckCircle2 size={13} className="text-primary" />
